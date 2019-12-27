@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>fetch</title>
+</head>
+<body>
+	<script type="text/javascript" src="fetch-2.0.0.js"></script>
+	<script type="text/javascript">
+		const http = new EasyHttp()
+
+		// 请求数据
+		http.get('http://jsonplaceholder.typicode.com/users')
+			.then((data)=>{
+				console.log(data)
+			})
+			.catch(err => console.log(err))
+
+		// 传输数据
+		const data = {
+			name:'zhangsan',
+			username:'lisi',
+			email:'13260094140@163.com'
+		};
+		// post user
+		http.post('http://jsonplaceholder.typicode.com/users',data)
+			.then(data=> console.log(data))
+			.catch(err => console.log(err))
+
+		// update user
+		http.put('http://jsonplaceholder.typicode.com/users/2',data)
+			.then(data=> console.log(data))
+			.catch(err => console.log(err))
+
+		// update user
+		http.delete('http://jsonplaceholder.typicode.com/users/2')
+			.then(data=> console.log(data))
+			.catch(err => console.log(err))
+	</script>
+</body>
+</html>

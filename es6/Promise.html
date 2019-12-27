@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>promise</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+			构造函数：Promise
+			一个非常牛逼闪电的东西！
+		*/
+		let promise = new Promise((resolve,reject)=>{
+			// resolve()
+			reject()
+		});
+		// console.log(promise)
+
+		promise.then(()=>console.log("成功，没有任何问题~"))
+			   .then(()=>console.log("成功，没有任何问题~"))
+			   .catch(()=>console.log("uh on , 出现了重大问题"))
+	</script>
+</body>
+</html>

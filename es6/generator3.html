@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>generator</title>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 mx-auto text-center">
+				<h1 class="mb-3">相亲网</h1>
+				<div id="imageDispaly"></div>
+				<br>
+				<div id="profileDispaly"></div>
+				<br>
+				<button class="btn btn-dark btn-block" id="next">下一个</button>
+			</div>
+		</div>	
+	</div>
+
+	<script type="text/javascript">
+		const data = [
+			{
+				name:'张三',
+				age:30,
+				gender:'男',
+				lookingfor:'女',
+				location:'北京',
+				image: 'https://randomuser.me/api/portraits/men/82.jpg'
+			},
+			{
+				name:'李四',
+				age:34,
+				gender:'女',
+				lookingfor:'男',
+				location:'成都',
+				image: 'https://randomuser.me/api/portraits/men/82.jpg'
+			},
+			{
+				name:'王五',
+				age:20,
+				gender:'男',
+				lookingfor:'女',
+				location:'上海',
+				image: 'https://randomuser.me/api/portraits/men/82.jpg'
+			}
+		]
+
+		// 迭代器的方法
+		// function profileIterator(profiles){
+		// 	let nextIndex = 0;
+		// 	return {
+		// 		next:function(){
+		// 			return nextIndex<profiles.length?
+		// 			{value:profiles[nextIndex++],done:false}:
+		// 			{value:undefined,done:true}
+		// 		}
+		// 	}
+		// }
+
+		// 生成器
+		function* profileIterator(){
+			yield data[0];
+			yield data[1];
+			yield data[2];
+		}
+
+		const profiles = profileIterator(data)
+
+		// 手动调用
+		nextProfile();
+
+		document.getElementById('next').addEventListener("click",nextProfile)
+
+		function nextProfile(){
+			const currentProfile = profiles.next().value
+			if(currentProfile !== undefined){
+				document.getElementById('profileDispaly').innerHTML = `
+					<ul class="list-group">
+						<li class="list-group-item">姓名：${currentProfile.name}</li>
+						<li class="list-group-item">年龄：${currentProfile.age}</li>
+						<li class="list-group-item">位置：${currentProfile.location}</li>
+						<li class="list-group-item">诉求：${currentProfile.gender}寻找的目标对象是${currentProfile.lookingfor}性朋友</li>
+					</ul>
+				`;
+				document.getElementById('imageDispaly').innerHTML = `
+					<img src="${currentProfile.image}" />
+				`;
+			}else{
+				// ajax
+				window.location.reload();
+			}
+			
+		}
+
+	</script>
+</body>
+</html>

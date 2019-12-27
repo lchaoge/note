@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>fetch2</title>
+	<link href="https://cdn.bootcss.com/skeleton/2.0.4/skeleton.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<h1>Fetch Api sandbox</h1>
+		<button id="button1">请求本地文件数据</button>
+		<button id="button2">请求本地json数据</button>
+		<button id="button3">请求网络数据</button>
+		<br>
+		<br>
+		<div id="output"></div>
+	</div>
+	<script type="text/javascript">
+		document.getElementById('button1').addEventListener("click",getText)
+		document.getElementById('button2').addEventListener("click",getJson)
+		document.getElementById('button3').addEventListener("click",getExternal)
+
+		// 获取本地纯文本数据
+		function getText(){
+			fetch('test.txt')
+				.then((res)=>res.text())
+				.then(data=>{
+					console.log(data)
+					document.getElementById('output').innerHTML = data
+				})
+				.catch(err=>console.log(err))
+		}
+
+		// 获取本地json数据
+		function getJson(){
+			fetch('posts.json')
+				.then((res)=>res.json())
+				.then(data=>{
+					console.log(data)
+					let output = ''
+					data.forEach((post)=>{
+						output += `<li>${post.title}</li>`
+					})
+					document.getElementById('output').innerHTML = output
+				})
+				.catch(err=>console.log(err))
+		}
+
+		// 获取网络API
+		function getExternal(){
+			fetch('https://api.github.com/users')
+				.then((res)=>res.json())
+				.then(data=>{
+					console.log(data)
+					let output = ''
+					data.forEach((user)=>{
+						output += `<li>${user.login}</li>`
+					})
+					document.getElementById('output').innerHTML = output
+				})
+				.catch(err=>console.log(err))
+		} 
+	</script>
+</body>
+</html>

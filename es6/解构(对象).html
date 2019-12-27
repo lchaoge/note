@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>解构(对象)</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+			解构
+			更快，更便捷
+		*/
+
+		var expense = {
+			type:'es6',
+			amount:'45'
+		}
+		var type = expense.type;
+		var amount = expense.amount;
+		console.log(type,amount)
+
+		// const {type,amount,abc} = expense;
+		// console.log(type,amount,abc)
+
+		// es5
+		var saveFiled = {
+			extension:'jpg',
+			name:'girl',
+			size:12323
+		}
+		// es5
+		function fileSammary(file){
+			return `${file.name}.${file.extension}的总大小是${file.size}`
+		}
+		// es6
+		function fileSammary2({name,extension,size}){
+			return `${name}.${extension}的总大小是${size}`
+		}
+		console.log(fileSammary2(saveFiled))
+	</script>
+</body>
+</html>

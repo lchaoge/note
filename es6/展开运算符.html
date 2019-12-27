@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>展开运算符</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+			spread operator展开运算符
+		*/
+		function addNumbers(...numbers){
+			return numbers.reduce((sum,number)=>{
+				return sum + number
+			})
+		}
+		console.log(addNumbers(1,2,3,4,5,6,7,8,9,10))
+
+		var defaultColors = ['red','greed']
+		var favoriteColors = ['orange','yellow']
+
+		console.log([...defaultColors,...favoriteColors])
+
+		var fallColors = ['fire red','fall orange']
+
+		console.log(['blue',...defaultColors,...favoriteColors,...fallColors])
+
+
+		// 练习
+		function validateShoppingList(...items){
+			if(items.indexOf('milk') < 0){
+				return ['milk',...items]
+			}
+		}
+
+		console.log(validateShoppingList('orange','bread','eggs'))
+
+	</script>
+</body>
+</html>

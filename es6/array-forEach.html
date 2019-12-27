@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>forEach</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<script type="text/javascript">
+		var colors = ['red','bule','green'];
+
+		// ES5 遍历方法
+		for(var i=0;i<colors.length;i++){
+			console.log(colors[i]);
+		};
+
+		// ES6 froEach
+		colors.forEach((color)=>{
+			console.log(color)
+		});
+
+		// 练习 : 遍历数组中的值，并计算总和
+
+		var numbers = [1,2,3,4,5,6];
+
+		var sum = 0;
+
+		numbers.forEach((number)=>{
+			sum+=number;
+		});
+		console.log(sum);
+
+		
+
+	</script>
+</body>
+</html>

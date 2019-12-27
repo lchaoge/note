@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>箭头函数</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+			箭头函数
+			解决的问题
+			1.缩减代码
+			2.改变this指向
+		*/
+		const double1 = function(number){
+			return number*2;
+		}
+
+		const double2 = (number)=>{
+			return number * 2;
+		}
+		const double3 = (number) => number * 2;
+
+		const double4 = number => number * 2;
+
+		const double5 = (number => number * 2);
+
+		const double6 = (number,number2) => number * number2;
+
+		// map一个数组，让数组中的值以double形式展示
+		const numbers = [1,2,3]
+		var newNumbers = numbers.map(number =>number * 2)
+		console.log(newNumbers)
+
+		// 改变this 指向
+		const team = {
+			members:['henry','elyse'],
+			teamName:'es6',
+			teamSummary1:function(){
+				return this.members.map(function(member){ 
+					// this 不知道指向谁了
+					return `${member}隶属于${this.teamName}小组1`;
+				}.bind(this))
+			},
+			teamSummary2:function(){
+				return this.members.map(member => `${member}隶属于${this.teamName}小组2`)
+			}
+		}
+		console.log(team.teamSummary1())
+		console.log(team.teamSummary2())
+	</script>
+</body>
+</html>

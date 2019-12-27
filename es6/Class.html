@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Class</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+			Class
+			万事皆对象
+		*/
+		// es5
+		// function Car(options){
+		// 	this.title = options.title;
+		// }
+		// Car.prototype.drive = function(){
+		// 	return 'Vroom'
+		// }
+		// const car = new Car({title:"BMW"})
+		// console.log(car)
+		// console.log(car.drive())
+
+		// // 继承
+		// function Toyota(options){
+		// 	Car.call(this,options)
+		// 	this.color = options.color;
+		// }
+
+		// Toyota.prototype = Object.create(Car.prototype)
+		// Toyota.prototype.constructor = Toyota
+
+		// const toyota = new Toyota({title:"fpcis",color:'red'})
+		// console.log(toyota)
+		// console.log(toyota.drice())
+		
+		// es6
+		class Car {
+			constructor({title}){
+				this.title = title
+			}
+			drive(){
+				return 'vroom';
+			}
+		}
+		const car = new Car({title:'BMW'})
+		console.log(car)
+		console.log(car.drive())
+
+		class Toyota extends Car{
+			constructor(options){
+				super(options)
+				this.color = options.color
+			}
+		}
+
+		const toyota = new Toyota({color:'red',title:'Focus'})
+
+		console.log(toyota);
+		console.log(toyota.drive())
+	</script>
+</body>
+</html>

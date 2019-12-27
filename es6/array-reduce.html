@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>reduce</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+			场景1
+			计算数组中所有值得总和
+		*/
+		var numbers = [10,20,30]
+		var sum = 0
+		// es5
+		for (var i = 0; i < numbers.length; i++) {
+			sum+=numbers[i]
+		}
+		console.log(sum)
+		// es6
+		var sumValue = numbers.reduce((sum,number)=>{
+			return sum+number
+		},0)
+		console.log(sumValue)
+		/*
+			场景2
+			将数组中对象的某个属性抽离到另外一个数组中
+		*/
+		var primaryColors = [
+			{color:'red'},
+			{color:'yellow'},
+			{color:'blue'}
+		]
+		var colors = primaryColors.reduce((previous,primaryColor)=>{
+			previous.push(primaryColor.color)
+			return previous
+		},[])
+		console.log(colors)
+
+		/*
+			场景3
+			判断字符串中括号是否对称
+		*/
+		function balancedParens(string){
+			return string.split("").reduce((previous,char)=>{
+				if(previous < 0){return previous;}
+				if(char === '('){return ++previous;}
+				if(char === ")"){return --previous;}
+				return previous;
+			},0)
+		}
+		console.log(balancedParens("((((())))"))
+	</script>
+</body>
+</html>

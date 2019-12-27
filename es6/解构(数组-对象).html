@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>解构(数组-对象)</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+			解构
+			更快，更便捷
+		*/
+		const names = ['zhaosan','lisi','wangwu']
+		// 解构
+		const [name1,name2,name3] = names;
+		console.log(name1,name2,name3)
+
+		// 返回数组个数
+		const {length} = names;
+		console.log(length)
+
+		// 结合展开运算符
+		const [name,...rest] = names;
+		console.log(name)
+		console.log(rest)
+
+		let a,b;
+		[a,b] = [100,200];
+		console.log(b)
+
+		// 对象数组
+		const people = [
+			{name:'zhangsan',age:20},
+			{name:'lisi',age:23},
+			{name:'wangwu',age:24},
+		]
+		// es5
+		// var age = people[0].age;
+		// console.log(age)说
+
+		// es6解构
+		const [{age}] = people;
+
+		console.log(age)
+
+		// 使用场景 将数组转化为对象
+		const points = [
+			[4,5],
+			[10,1],
+			[0,40]
+		];
+
+		// 期望数据格式
+		// {
+		// 	{x:4,y:5},
+		// 	{x:10,y:1},
+		// 	{x:0,y:40}
+		// }
+
+		// es6
+		// let newPoints = points.map((pair)=>{
+		// 	// const x = pair[0];
+		// 	// const y = pair[1];
+		// 	const [x,y] = pair
+		// 	return {x,y}
+		// })
+		let newPoints = points.map(([x,y])=>{
+			// const x = pair[0];
+			// const y = pair[1];
+			// const [x,y] = pair
+			return {x,y}
+		})
+		console.log(newPoints)
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>let-const</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+			var let const
+		*/
+		
+		// var 
+		function testVar(){
+			var a = 30;
+			if(true){
+				var a = 50;
+				console.log(a); // 50
+			}
+			console.log(a);  // 50
+		}
+		testVar()
+
+		// let 
+		function testLet(){
+			let a = 30;
+			if(true){
+				let a = 60;
+				console.log(a); // 50
+			}
+			console.log(a);  //30
+		}
+		testLet()
+
+		{
+			let b = 100;
+		}
+		// console.log(b); // 报错
+
+		// var 
+		// for (var i = 0; i < 10; i++) {
+		// 	console.log(i)
+		// }
+		// console.log(i)
+
+		// let
+		for (let i = 0; i < 10; i++) {
+			console.log(i)
+		}
+		// console.log(i)
+
+
+		// const 常量
+		const x = 10;
+		// x = 100; // 报错
+
+		const colors = []
+		// colors  = 'Green' // 报错
+		colors.push("red")
+		colors.push("blue")
+
+		const str = 'hello'
+		// str = 'world' // 报错
+
+		console.log(colors)
+	</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>fetch</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+			new http: fetch
+			一个基于promise的请求方法，更简单，更便捷
+		*/
+
+		let promise = new Promise((resolve,reject)=>{
+			setTimeout(()=>{
+				resolve()
+			},3000)
+		})
+
+		// promise
+		// 	.then(()=>console.log("成功，没有任何问题"))
+		// 	.then(()=>console.log("成功，没有任何问题"))
+		// 	.catch(()=>console.log("错误"))
+
+		// console.log(fetch)
+
+		let url = 'http://jsonplaceholder.typicode.com/posts'
+
+		fetch(url)
+			.then(response=>response.json())
+			.then(data=>console.log(data))
+			.catch(err=>console.log(err))
+	</script>
+</body>
+</html>
